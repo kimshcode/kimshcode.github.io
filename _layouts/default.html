@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+    <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  </head>
+  <body>
+    {% assign current_category = page.active_category | default: page.category_name | default: page.categories[0] %}
+    {% assign current_nav = page.active_nav | default: page.title %}
+    <div class="site-shell">
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <a class="brand" href="{{ '/' | relative_url }}">
+            <img class="brand-avatar" src="{{ '/assets/images/profile.jpeg' | relative_url }}" alt="Kim profile illustration">
+            <span class="brand-copy">
+              <strong>{{ site.title }}</strong>
+              <small>{{ site.description }}</small>
+            </span>
+          </a>
+
+          <nav class="sidebar-nav" aria-label="Primary">
+            <a class="{% if page.url == '/' or current_nav == 'Overview' or current_nav == 'Home' %}is-active{% endif %}" href="{{ '/' | relative_url }}">Overview</a>
+            <a class="{% if current_nav == 'Introduction' %}is-active{% endif %}" href="{{ '/introduction/' | relative_url }}">Introduction</a>
+          </nav>
+
+          <div class="sidebar-group">
+            <p class="sidebar-label">Categories</p>
+            <nav class="category-list" aria-label="Categories">
+              {% assign category_pages = site.pages | where: "layout", "category" | sort: "order" %}
+              {% for category_page in category_pages %}
+                {% assign category_name = category_page.category_name %}
+                {% assign posts = site.categories[category_name] %}
+                <a class="{% if current_category == category_name %}is-active{% endif %}" href="{{ category_page.url | relative_url }}">
+                  <span>{{ category_page.title }}</span>
+                  <span class="category-count">{{ posts | size }}</span>
+                </a>
+              {% endfor %}
+            </nav>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-pane">
+        {{ content }}
+        <footer class="site-footer">
+          <p>&copy; {{ 'now' | date: '%Y' }} <a href="https://github.com/kimshcode">kimshcode</a>. All rights reserved.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

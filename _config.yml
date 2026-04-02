@@ -1,0 +1,7 @@
+title: Kimshcode
+description: Minimal notes and updates.
+theme: jekyll-theme-minimal
+markdown: kramdown
+show_downloads: false
+plugins:
+  - jekyll-feed
