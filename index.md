@@ -3,11 +3,6 @@ layout: default
 title: Home
 ---
 
-<div class="hero">
-  <p class="eyebrow">Overview</p>
-  <h1>{{ site.title }}</h1>
-</div>
-
 {% for post in site.posts %}
 <article class="post-card">
   <div class="post-card-top">
