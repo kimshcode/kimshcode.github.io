@@ -10,11 +10,12 @@ layout: default
   {% endif %}
 </div>
 
-{% assign posts = site.categories[page.category_name] %}
-{% for post in posts %}
+{% for post in site.posts %}
+{% if post.categories contains page.category_name %}
 <article class="post-card">
   <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
   <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
   <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
 </article>
+{% endif %}
 {% endfor %}

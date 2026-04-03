@@ -35,10 +35,15 @@
               {% assign category_pages = site.pages | where: "layout", "category" | sort: "order" %}
               {% for category_page in category_pages %}
                 {% assign category_name = category_page.category_name %}
-                {% assign posts = site.categories[category_name] %}
+                {% assign post_count = 0 %}
+                {% for post in site.posts %}
+                  {% if post.categories contains category_name %}
+                    {% assign post_count = post_count | plus: 1 %}
+                  {% endif %}
+                {% endfor %}
                 <a class="{% if current_category == category_name %}is-active{% endif %}" href="{{ category_page.url | relative_url }}">
                   <span>{{ category_page.title }}</span>
-                  <span class="category-count">{{ posts | size }}</span>
+                  <span class="category-count">{{ post_count }}</span>
                 </a>
               {% endfor %}
             </nav>
