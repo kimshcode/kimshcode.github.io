@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
   </head>
-  <body>
+  <body style="--site-body-font-size: {{ site.body_font_size | default: '1.125rem' }}; --site-body-text-width: {{ site.body_text_width | default: '80ch' }};">
     {% assign current_category = page.active_category | default: page.category_name | default: page.categories[0] %}
     {% assign current_nav = page.active_nav | default: page.title %}
     <div class="site-shell">
@@ -47,7 +47,9 @@
       </aside>
 
       <main class="content-pane">
-        {{ content }}
+        <div class="content-body">
+          {{ content }}
+        </div>
         <footer class="site-footer">
           <p>&copy; {{ 'now' | date: '%Y' }} <a href="https://github.com/kimshcode">kimshcode</a>. All rights reserved.</p>
         </footer>

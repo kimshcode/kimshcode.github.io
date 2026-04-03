@@ -26,6 +26,7 @@ body {
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 32%),
     linear-gradient(180deg, #f8f3eb 0%, var(--bg) 100%);
   font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--site-body-font-size, 1.125rem);
 }
 
 a {
@@ -153,7 +154,14 @@ a:focus {
 }
 
 .content-pane {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   padding: 36px 42px 56px;
+}
+
+.content-body {
+  flex: 1 0 auto;
 }
 
 .hero,
@@ -277,10 +285,13 @@ a:focus {
 
 .post-header {
   margin-bottom: 1.2rem;
+  max-width: var(--site-body-text-width, 80ch);
 }
 
 .post-body {
   display: block;
+  max-width: var(--site-body-text-width, 80ch);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 .post-body > :first-child {
@@ -307,11 +318,12 @@ a:focus {
 
 .section-link {
   margin-top: 1rem;
+  max-width: var(--site-body-text-width, 80ch);
 }
 
 .site-footer {
   margin-top: 2rem;
-  padding-top: 1rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--line);
 }
 

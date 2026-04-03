@@ -2,6 +2,8 @@ title: Kimshcode
 description: Minimal notes and updates.
 theme: jekyll-theme-minimal
 markdown: kramdown
+body_font_size: 1.125rem
+body_text_width: 80ch
 show_downloads: false
 plugins:
   - jekyll-feed
