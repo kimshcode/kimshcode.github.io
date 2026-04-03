@@ -48,16 +48,15 @@
               {% endfor %}
             </nav>
           </div>
+
+          <footer class="sidebar-footer">
+            <p>&copy; {{ 'now' | date: '%Y' }} <a href="https://github.com/kimshcode">kimsh.code</a>. All rights reserved.</p>
+          </footer>
         </div>
       </aside>
 
       <main class="content-pane">
-        <div class="content-body">
-          {{ content }}
-        </div>
-        <footer class="site-footer">
-          <p>&copy; {{ 'now' | date: '%Y' }} <a href="https://github.com/kimshcode">kimshcode</a>. All rights reserved.</p>
-        </footer>
+        {{ content }}
       </main>
     </div>
   </body>
